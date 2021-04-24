@@ -22,15 +22,15 @@ The acknowledge byte is `254`.
 
 ## Example `read_bulk_flash`
 
-1) Send `chr(1),chr(4)` (i.e., `0x14`?)
+1) Send `chr(1),chr(4)` (i.e., `0x0104` / `"\x01\x04"`)
 2) Send number of bytes to read `chr(N&0xFF),chr((N>>8)&0xFF)`
    (so `N`'s low byte's compliment to `0xFF`, followed by high byte's compliment
    to `0xFF`, i.e. binary compliment of swapped bytes?)
-3) Send Page Number `chr(0-19)` (i.e. `0x01`..`0x13`?)
+3) Send Page Number `chr(0-19)` (i.e., a char in range `0x01`..`0x13`)
 4) read `N` bytes (TODO: how?)
 5) Read 1 byte and check if equals `254` (so that is a parity byte?)
 
 ## Example `get version`
 
-1) Send `chr(11)`,`chr(5)` (`0xB5`?)
+1) Send `chr(11)`,`chr(5)` (`0x0B05` / `"\x0B\x05"`)
 2) Read until newline           
